@@ -1,12 +1,8 @@
 package com.empresa.investimento.model.entity;
 
-import lombok.Getter;
 
-@Getter
 public enum UserRole {
-
     ADMIN("admin"),
-
     USER("user");
 
     private String role;
@@ -15,4 +11,7 @@ public enum UserRole {
         this.role = role;
     }
 
+    public String getRole(){
+        return role;
+    }
 }

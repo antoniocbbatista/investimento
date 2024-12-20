@@ -1,4 +1,4 @@
 package com.empresa.investimento.model.entity.dto;
 
-public record LoginResponseDTO() {
+public record LoginResponseDTO(String token) {
 }
