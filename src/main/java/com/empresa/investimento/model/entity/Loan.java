@@ -6,7 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+import java.time.LocalDate;
+
+@Entity(name = "loan")
+@Table(name = "loan")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,10 +22,23 @@ public class Loan {
 
     private Double requestAmount;
 
-    private Double interest;
+    private Double interestRate;
 
-    private String status;
+    private LoanStatus status;
+
+    @Getter
+    private LocalDate startDate;
+
+    private int term;
 
     @ManyToOne
     private User user;
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public int getTerm() {
+        return term;
+    }
 }

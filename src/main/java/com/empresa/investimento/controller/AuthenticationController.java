@@ -3,9 +3,9 @@ package com.empresa.investimento.controller;
 
 import com.empresa.investimento.model.entity.User;
 import com.empresa.investimento.infra.security.TokenService;
-import com.empresa.investimento.model.entity.dto.AuthenticationDTO;
-import com.empresa.investimento.model.entity.dto.LoginResponseDTO;
-import com.empresa.investimento.model.entity.dto.RegisterDTO;
+import com.empresa.investimento.model.dto.AuthenticationDTO;
+import com.empresa.investimento.model.dto.LoginResponseDTO;
+import com.empresa.investimento.model.dto.RegisterDTO;
 import com.empresa.investimento.repository.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,7 @@ public class AuthenticationController {
         if(this.repository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-        User newUser = new User(data.login(), encryptedPassword, data.role(), data.email());
+        User newUser = new User(data.login(), encryptedPassword, data.email(), data.cpf(), data.address(), data.phone());
 
         this.repository.save(newUser);
 

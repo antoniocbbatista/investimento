@@ -30,15 +30,24 @@ public class User implements UserDetails {
 
     private UserRole role;
 
+    private String cpf;
 
-    public User(){}
+    private String address;
+
+    private String phone;
 
 
-    public User(String login, String password, UserRole role, String email) {
+    public User(String login, String encryptedPassword, String email, String cpf, String address, String phone){}
+
+
+    public User(String login, String password, UserRole role, String email, String cpf, String address, String phone) {
         this.login = login;
         this.password = password;
         this.role = role;
         this.email = email;
+        this.cpf = cpf;
+        this.address = address;
+        this.phone = phone;
     }
 
     public String getLogin() {
