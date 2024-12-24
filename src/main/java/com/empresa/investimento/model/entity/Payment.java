@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity(name = "payment")
 @Table(name = "payment")
@@ -17,8 +18,8 @@ import java.time.LocalDate;
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)  // Use AUTO em vez de UUID
+    private UUID id;
 
     private LocalDate datePayment;
 

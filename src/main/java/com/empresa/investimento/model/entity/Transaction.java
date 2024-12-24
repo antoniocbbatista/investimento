@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,8 +16,8 @@ import lombok.Setter;
 public class Transaction {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)  // Use AUTO em vez de UUID
+    private UUID id;
 
     private Double amount;
 
