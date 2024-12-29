@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
@@ -18,7 +17,7 @@ import java.util.UUID;
 @Table(name = "users")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)  // Use AUTO em vez de UUID
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private String login;
@@ -27,28 +26,47 @@ public class User implements UserDetails {
 
     private String email;
 
-    private Double balance;
-
-    private UserRole role;
-
     private String cpf;
 
     private String address;
 
     private String phone;
 
+    private Double balance;
 
-    public User(String login, String encryptedPassword, String email, String cpf, String address, String phone){}
+    private UserRole role;
 
+    public User() {
+    }
 
-    public User(String login, String password, UserRole role, String email, String cpf, String address, String phone) {
+    public User(String login, String password, String email, String cpf, String address, String phone, String role){
         this.login = login;
         this.password = password;
-        this.role = role;
         this.email = email;
         this.cpf = cpf;
         this.address = address;
         this.phone = phone;
+        this.role = UserRole.valueOf(role);
+    }
+
+
+    public User(UUID id, String login, String password, String email, String cpf, String address, String phone, Double balance, UserRole role) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.cpf = cpf;
+        this.address = address;
+        this.phone = phone;
+        this.balance = balance;
+        this.role = role;
+    }
+
+    public User(String login, String password, String role, String email) {
+        this.login = login;
+        this.password = password;
+        this.role = UserRole.valueOf(role);
+        this.email = email;
     }
 
     public String getLogin() {
